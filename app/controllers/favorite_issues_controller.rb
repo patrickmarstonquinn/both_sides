@@ -1,6 +1,6 @@
 class FavoriteIssuesController < ApplicationController
   def index
-    @favorite_issues = FavoriteIssue.all
+    @favorite_issues = FavoriteIssue.page(params[:page]).per(10)
 
     render("favorite_issues/index.html.erb")
   end
