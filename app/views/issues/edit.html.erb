@@ -1,0 +1,82 @@
+<!-- Validation failure messages -->
+<% if @issue.errors.any? %>
+  <% @issue.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Issue #<%= @issue.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_issue/<%= @issue.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for conservative_take -->
+      <div class="form-group">
+        <label for="conservative_take" class="control-label">
+          Conservative take
+        </label>
+
+        <input type="text" id="conservative_take" name="conservative_take" placeholder="Conservative take" class="form-control" value="<%= @issue.conservative_take %>">
+      </div>
+
+      <!-- Label and input for liberal_take -->
+      <div class="form-group">
+        <label for="liberal_take" class="control-label">
+          Liberal take
+        </label>
+
+        <input type="text" id="liberal_take" name="liberal_take" placeholder="Liberal take" class="form-control" value="<%= @issue.liberal_take %>">
+      </div>
+
+      <!-- Label and input for topic -->
+      <div class="form-group">
+        <label for="topic" class="control-label">
+          Topic
+        </label>
+
+        <input type="text" id="topic" name="topic" placeholder="Topic" class="form-control" value="<%= @issue.topic %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @issue.user_id %>">
+      </div>
+
+      <!-- Label and input for issue_name -->
+      <div class="form-group">
+        <label for="issue_name" class="control-label">
+          Issue name
+        </label>
+
+        <input type="text" id="issue_name" name="issue_name" placeholder="Issue name" class="form-control" value="<%= @issue.issue_name %>">
+      </div>
+
+      <!-- Label and input for image -->
+      <div class="form-group">
+        <label for="image" class="control-label">
+          Image
+        </label>
+
+        <input type="text" id="image" name="image" placeholder="Image" class="form-control" value="<%= @issue.image %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Issue
+      </button>
+      or
+      <a href="/issues/<%= @issue.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

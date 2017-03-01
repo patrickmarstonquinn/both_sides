@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1>
+    Issues
+    <a href="/issues/new" class="btn btn-lg btn-success">New Issue</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Conservative take</th>
+        <th>Liberal take</th>
+        <th>Topic</th>
+        <th>User</th>
+        <th>Issue name</th>
+        <th>Image</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @issues.each do |issue| %>
+      <tr>
+        <td><%= issue.conservative_take %></td>
+        <td><%= issue.liberal_take %></td>
+        <td><%= issue.topic %></td>
+        <td><%= issue.user_id %></td>
+        <td><%= issue.issue_name %></td>
+        <td><%= issue.image %></td>
+        <td>
+          <a href="/issues/<%= issue.id %>" class="btn btn-primary">Show</a>
+          <a href="/issues/<%= issue.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_issue/<%= issue.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
