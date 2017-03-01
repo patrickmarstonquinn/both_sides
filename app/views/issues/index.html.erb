@@ -28,8 +28,11 @@
         <td><img src='<%= issue.image %>' class='img-responsive'></td>
         <td>
           <a href="/issues/<%= issue.id %>" class="btn btn-primary">Show</a>
-          <a href="/issues/<%= issue.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_issue/<%= issue.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == issue.user %>
+            <a href="/issues/<%= issue.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_issue/<%= issue.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
