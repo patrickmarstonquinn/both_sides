@@ -16,6 +16,8 @@ class IssuesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @favorite_issue = FavoriteIssue.new
     @issue = Issue.find(params[:id])
 
     render("issues/show.html.erb")
