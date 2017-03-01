@@ -23,7 +23,13 @@
         <td><%= issue.conservative_take %></td>
         <td><%= issue.liberal_take %></td>
         <td><%= issue.topic %></td>
-        <td><%= issue.user.email %></td>
+        <td>
+          <% if issue.user.present? %>
+            <a href="/users/<%= issue.user.id %>">
+              <%= issue.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td><%= issue.issue_name %></td>
         <td><img src='<%= issue.image %>' class='img-responsive'></td>
         <td>

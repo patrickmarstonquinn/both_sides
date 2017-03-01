@@ -15,7 +15,13 @@
       <dd><%= @issue.topic %></dd>
 
       <dt>User</dt>
-      <dd><%= @issue.user_id %></dd>
+      <dd>
+        <% if @issue.user.present? %>
+          <a href="/users/<%= @issue.user_id %>">
+            <%= @issue.user.email %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Issue name</dt>
       <dd><%= @issue.issue_name %></dd>

@@ -16,8 +16,20 @@
 
       <% @favorite_issues.each do |favorite_issue| %>
       <tr>
-        <td><%= favorite_issue.issue.conservative_take %></td>
-        <td><%= favorite_issue.user.email %></td>
+        <td>
+          <% if favorite_issue.issue.present? %>
+            <a href="/issues/<%= favorite_issue.issue.id %>">
+              <%= favorite_issue.issue.conservative_take %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if favorite_issue.user.present? %>
+            <a href="/users/<%= favorite_issue.user.id %>">
+              <%= favorite_issue.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/favorite_issues/<%= favorite_issue.id %>" class="btn btn-primary">Show</a>
           <a href="/favorite_issues/<%= favorite_issue.id %>/edit" class="btn btn-warning">Edit</a>
