@@ -1,6 +1,7 @@
 class FavoriteIssuesController < ApplicationController
   def index
-    @favorite_issues = FavoriteIssue.page(params[:page]).per(10)
+    @q = FavoriteIssue.ransack(params[:q])
+    @favorite_issues = @q.result(:distinct => true).includes(:user, :issue).page(params[:page]).per(10)
 
     render("favorite_issues/index.html.erb")
   end
