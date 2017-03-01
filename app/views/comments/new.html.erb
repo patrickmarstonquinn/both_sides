@@ -42,7 +42,7 @@
           Issue
         </label>
 
-        <input type="text" id="issue_id" name="issue_id" placeholder="Issue" class="form-control" value="<%= @comment.issue_id %>">
+        <%= select_tag(:issue_id, options_from_collection_for_select(Issue.all, :id, :conservative_take, @comment.issue_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">
