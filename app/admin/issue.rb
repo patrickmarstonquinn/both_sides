@@ -1,5 +1,7 @@
 ActiveAdmin.register Issue do
 
+ permit_params :conservative_take, :liberal_take, :topic, :user_id, :issue_name, :image
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
