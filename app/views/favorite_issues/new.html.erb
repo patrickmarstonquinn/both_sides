@@ -24,7 +24,7 @@
           Issue
         </label>
 
-        <input type="text" id="issue_id" name="issue_id" placeholder="Issue" class="form-control" value="<%= @favorite_issue.issue_id %>">
+        <%= select_tag(:issue_id, options_from_collection_for_select(Issue.all, :id, :conservative_take, @favorite_issue.issue_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for user_id -->
